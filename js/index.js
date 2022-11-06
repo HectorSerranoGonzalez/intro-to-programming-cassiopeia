@@ -7,13 +7,33 @@ copyright.innerHTML = `Hector Serrano &#169; ${thisYear}`;
 footer.appendChild(copyright);
 
 skills = ['HTML', 'Javascript', 'CSS'];
-const skillsSection = document.getElementById('skills');
+/* const skillsSection = document.getElementById('skills');
 const skillsList = skillsSection.querySelector('ul');
 for (let i = 0; i < skills.length; i++) {
     const skill = document.createElement('li');
     skill.innerText = skills[i];
     skillsList.appendChild(skill);
+} */
+
+function hydrateList (sectionId, items) {
+    const section = document.querySelector(sectionId);
+    const ul = section.querySelector('ul');
+    for (let i = 0; i < items.length; i++) {
+        const listItem = document.createElement('li');
+        const item = items [i];
+        if (item.name) {
+            const repoLink = document.createElement('a');
+            repoLink.href = item.url;
+            repoLink.innerText = item.name;
+            listItem.appendChild(repoLink);
+        } else {
+        listItem.innerText = items[i];
+        }
+        ul.appendChild(listItem);
+    }
 }
+
+this.hydrateList('#skills', skills);
 
 const messageForm = document.querySelector('[name = leave_message] ');
 messageForm.addEventListener('submit', function(event){
@@ -45,3 +65,43 @@ function onRemoveButtonClick(event) {
     entry.remove();
 
 }
+
+
+
+function handleResponse() {
+    const repositories = JSON.parse(this.response);
+    const repos = repositories.map(repo => (
+    {
+        name: repo.name,
+        url: repo.html_url
+    }
+));
+    hydrateList('#projects', repos);
+    console.log(repos);
+/*     console.log(repositories[0].name);
+    console.log(repositories); */
+}
+
+
+
+/* function handleResponse() {
+    const repositories = JSON.parse(this.response);
+    const repoNames = repositories.map(repo => repo.name);
+    hydrateList('#projects', repoNames);
+    console.log(repoNames);
+/*     console.log(repositories[0].name);
+    console.log(repositories);
+} */
+
+const githubRequest = new XMLHttpRequest();
+githubRequest.addEventListener('load', handleResponse);
+githubRequest.open('GET', 'https://api.github.com/users/HectorSerranoGonzalez/repos');
+githubRequest.send();
+
+/* window.addEventListener('load', (event) => {
+    const githubRequest = new XMLHttpRequest();
+    githubRequest.open('GET', 'https://api.github.com/users/HectorSerranoGonzalez/repos');
+    githubRequest.send();
+    const repositories = JSON.parse(this.response);
+    console.log(repositories);
+}); */
