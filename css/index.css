@@ -1,66 +1,102 @@
 * {
-    color:blue;
-    font-family: 'Times New Roman', Times, serif
+    border 1px solid red;
+    font-family: Tahoma, sans-serif, 'Times New Roman', Times, serif;
+    color: #077fb3;
+}
+
+p {
+    font-size: 16px;
+}
+
+.topnav {
+     float: right;
+     padding-top: 10px;
+}
+
+.topnav a {
+    display: inline;
+    padding: 14px 16px;
+}
+
+img {
+    width: 80px;
+    height: auto;
+}
+
+.name {
+    font-size: 20px;
+}
+
+.menu {
+    padding-left: 10px;
+    padding-top: 10px;
 }
 
 body {
-    background-color: #fffef5;
+    background-color: white;
+    margin-left: 100px;
+    margin-right: 100px;
+    border-left: 2px solid #077fb3;
+    border-right: 2px solid #077fb3;
+    box-shadow: -10px 0px 20px #077fb3, 10px 0px 20px #077fb3;
 }
 
 section {
     padding: 10px 50px 10px 50px;
 }
 
-h1 {
-    color: black;
+h1, h2 {
+    padding: 5px;
     font-weight: 100px;
-    font-size: 20px;
-    text-align: center;
-}
-
-h2 {
-    color: black;
-    font-weight: 100px;
-    font-size: 20px;
-    text-align: center;
-}
-
-.experienceHead {
-   padding-right: 400px;
-   border: 1px solid red; 
-}
-
-.experiencePara {
-    border: 1px solid red;
-    margin-left: 10px;
-    margin-right: 300px;
-}
-
-.aboutHead {
-    border: 1px solid red;
-    padding-left: 400px;
-}
-
-.aboutPara {
-    border: 1px solid red;
-    margin-left: 300px;
-    margin-right: 10px;
-}
-
-.skillsHead {
+    font-size: 28px;
     text-align: left;
-    border: 1px solid red;
-    padding-left: 35px;
+    background-color: #fafafa;
+    box-shadow: -3px 6px 3px #077fb3;
+    border-left: 1px solid #077fb3;
+    border-bottom: 1px solid #077fb3;
+    display: block;
 }
 
 li {
-    border: 1px solid red;
-    margin-top: 5px;
+/*     display: inline; */
+    list-style-type: none;
 }
 
 ul { 
-    border: 1px solid red;
     margin-top: 5px;
+    padding-left: 0px;
+}
+
+.skillsList li {
+    display: inline;
+    background-color: white;
+    font-size: 18px;
+    margin-right: 20px;
+    padding: 2px;
+    border: 2px solid #077fb3;
+    box-shadow: -2px 3px 3px #077fb3;
+}
+
+.experienceList{
+    display: flex;
+    flex-direction: column;
+    margin-right: 50px;
+    margin-left: 50px;
+}
+
+.experienceList li {
+    font-size: 16px;
+    padding: 20px 10px 20px 10px;
+    background-color: #fafafa;
+    border: 1px solid #077fb3;
+    margin-bottom: 10px;
+}
+
+.jobDate {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: -18px;
+    
 }
 
 button {
@@ -94,7 +130,12 @@ textarea {
 footer {
     background-color: aqua;
     padding: 8px;
-    border: 1px solid red;
+}
+
+.thisForm {
+    display: flex;
+    flex-direction: row;
+    padding-left: 100px;
 }
 
 @media only screen and (max-width: 600px) {
