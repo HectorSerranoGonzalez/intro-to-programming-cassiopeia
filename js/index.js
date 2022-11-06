@@ -82,6 +82,17 @@ function handleResponse() {
     console.log(repositories); */
 }
 
+function onSuccess(repositories) {
+    const repos = repositories.map(repo => (
+    {
+        name: repo.name,
+        url: repo.html_url
+    }
+));
+    hydrateList('#projects', repos);
+    console.log(repos);
+}
+
 
 
 /* function handleResponse() {
@@ -93,10 +104,20 @@ function handleResponse() {
     console.log(repositories);
 } */
 
-const githubRequest = new XMLHttpRequest();
+/* const githubRequest = new XMLHttpRequest();
 githubRequest.addEventListener('load', handleResponse);
 githubRequest.open('GET', 'https://api.github.com/users/HectorSerranoGonzalez/repos');
-githubRequest.send();
+githubRequest.send(); */
+
+fetch('https://api.github.com/users/HectorSerranoGonzalez/repos')
+  .then((response) => response.json())
+  .then(onSuccess)
+  .catch((error) => {
+    const section = document.querySelector('#projects');
+    const errorLabel = document.createElement('label');
+    errorLabel.innerText = 'Cannot load projects';
+    section.appendChild(errorLabel);
+  });
 
 /* window.addEventListener('load', (event) => {
     const githubRequest = new XMLHttpRequest();
